@@ -1,0 +1,269 @@
+/* WRAPPERS */
+#gallery{
+  outline: none;
+  background-color: rgba(0, 0, 0, 0);
+}
+.fancybox-show-caption.fancybox-vertical-caption .fancybox-caption {
+  transform: translate3d(0, 0, 0); background-color: var(--middle-container-background)
+}
+/**** LIGHTBOX UI ****/
+.fancybox-bg { background: #303030;
+} 
+  /* Info, Thumbnail, Close buttons */
+.fancybox-button { 
+  background-color: var(--main-background);
+  color: var(--off-white);
+  outline: 2px solid black;
+  font-size: 14px;
+  width: 80px;
+}
+.fancybox-button:hover {
+  background: rgb(168, 57, 57);}
+  /* "Previous/Next" buttons beside the image */
+.fancybox-navigation .fancybox-button {
+  opacity: 0.5;
+  width: 50px;
+  height: 50px;
+  z-index: 99996;
+  padding: 0;
+}
+.fancybox-navigation .fancybox-button[disabled],
+.fancybox-navigation .fancybox-button[disabled]:hover {
+  color: var(--off-white);
+}
+
+/**** DESCRIPTION (AKA 'CAPTION') BOX ****/
+h3,h4,p{
+  text-align: center;
+ letter-spacing: 1px;
+  word-spacing: 2px;
+ line-height: 150%;
+}
+h3{
+  padding: 2px 0px;
+}
+h4{
+  line-height: 200%;
+  color: gray;}
+  /* "Previous/Next" buttons inside the description box */
+.back-button{
+  left: 0;
+  margin-bottom:-30px;
+}
+.next-button{
+  right: 0;
+  float: right;
+} 
+.fancy-nav a {
+  display: inline-block;
+  text-align: center;
+  width: 30px;
+  height: 30px;
+  color: var(--off-white);
+  background: rgb(56, 56, 56);
+  font-size: 40px;
+  line-height: 20px;
+  border-radius: 50%;
+  -moz-user-select: none;
+  user-select: none
+}
+.fancybox-caption a {
+  color: #ffffff;
+} 
+.fancy-nav a:hover {
+  color: rgb(89, 89, 89);
+}
+  /* Position of description box */
+.fancybox-caption > div {
+  padding: 20px;
+  margin:  20px;
+  max-height: calc(30vh - 20px);
+  overflow-y: auto;
+  overflow-x:hidden;
+}
+.fancybox-caption { 
+  text-align: left;
+  top: auto;
+  bottom:0;
+  left: 0;
+  right: 0;
+  padding: 0px;
+  width: 100%;
+  height: 30vh;
+  color: #000000;
+  background: var(--off-white);
+  box-shadow: 0 0 10px #888;
+  z-index: 99996;
+  outline: 2px solid black;
+  transform: translate3d(0, 100%, 0); /* <-- Positions description box underneath the bottom edge of screen */
+}
+.caption,
+.fancybox-caption::before {
+  display: none;  /* <-- Does not appear before clicking 'info' */
+}
+.fancybox-show-caption .fancybox-caption,.fancybox-caption {
+  transition: transform .5s;   /* After clicking on 'info' */
+}
+
+/**** FILTER NAV ****/
+#title-bar{
+  outline: 2px solid black;
+  text-align: center;
+  font-family: "futura-bold";
+  color: rgb(237, 237, 237);
+  letter-spacing: 1px;
+  padding: 5px;
+  background-color: rgb(15, 15, 15);
+  font-size: 22px;}
+#FilterContainer{
+  background-color: var(--middle-container-background);
+  text-align: center;
+  outline: 2px solid black;
+  padding: 0;
+}
+#FilterContainer li{
+  list-style-type: none;
+  padding: 5px;
+}
+.btn {
+  cursor: pointer; transition: 0.3s;  /* Individual gallery filter buttons */
+}
+.btn:hover {
+  transform: translateY(-2px) translateX(1px);
+  animation-name: rainbow-text;
+  animation-duration: 13.55s;
+  animation-iteration-count: infinite;
+}
+ 
+.btn.active { /* Current gallery filter button that's chosen */
+  background-color: rgb(217, 223, 225);
+}
+ 
+@keyframes rainbow-text {
+  0% {color: #8e44ad;}
+ 10% {color: #3eded9;}
+ 20% {color: #e151d7;}
+ 30% {color: #3ee34f;}
+ 40% {color: #FF3B3B;}
+ 50% {color: #F2D053;}
+ 60% {color: #de2be7;}
+ 70% {color: #30e45a;}
+ 80% {color: #F8499B;}
+ 90% {color: #3eded9;}
+100% {color: #A20EB5;}
+}
+ /* Settings to make "filter-again.js" work */
+.filter { 
+  display: none;
+}
+.show {
+  display: block;
+  animation: fadeIn 1s ease;
+}
+@keyframes fadeIn{
+  0%{opacity: 0;}
+  100%{opacity: 1;}
+}
+ 
+ /**** GALLERY IMAGES + HOVER ANIMATION ****/
+ .gallery-media{
+  margin-top: 0;
+  display: grid;
+  padding: 20px;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  transition: 0.4s;
+  gap: 20px;
+  outline: 2px solid black;
+  background-color: var(--middle-container-background); /*Middle container*/
+ }
+.gallery-media img{
+  width: 160px;
+  height: 160px;
+  object-fit: contain;
+  transition: 0.4s;
+}
+.gallery-media img:hover{
+  scale: 1.07;
+}
+.gallery:after {
+  content: "";
+  clear: both;
+}
+
+
+/* LIGHT/DARK MODE */
+.nav-button-2, #nav-check-2 {
+  display: none;
+}
+
+@media (max-width:1340px) {
+  .gallery-media{grid-template-columns: 1fr 1fr 1fr 1fr;}
+}
+@media (max-width:1170px) {
+  .gallery-media{padding: 10px;}
+  .gallery-media img{
+    width: 140px;
+    height: 140px;}
+}
+@media (max-width:1100px) {
+  .gallery-media{
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 10px;}
+}
+@media (max-width:1060px) {
+  .gallery-media{
+    grid-template-columns: 1fr 1fr 1fr 1fr;}
+}
+@media (max-width:1045px) {
+  .gallery-media{grid-template-columns: 1fr 1fr 1fr;}
+}
+@media (max-width:880px) {
+  .wrapper{
+    width: 100%;
+    gap: 10px;
+    grid-template-rows: 40px auto auto 40px;
+    grid-template-columns: 75px 1fr 1fr 75px;
+    grid-template-areas: 
+      'H H H H'
+      'L L L L'
+      'M M M M'
+      'F F F F';
+  }
+  .gallery-media{
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;}
+  .gallery-media img{
+    width: 125px;
+    height: 125px;}
+
+    /* NAV/MOBILE MENU */
+    .nav-button-2 {
+      display: inline-block;
+    }
+    .nav-button-2 > label {
+      display: inline-block;
+      cursor: pointer;
+    }
+    #FilterContainer {
+      width:100%;
+      height: 0px;
+      transition: all 0.4s ease-in-out;
+      overflow:hidden;
+      z-index: 999;
+    }
+    #FilterContainer, #FilterContainer  a {
+      display: block;
+    }
+    #nav-check-2:checked ~ #FilterContainer {
+      height: calc(180px - 0px);
+      overflow-y: none;
+    }
+}
+@media (max-width:685px) {
+  .gallery-media{grid-template-columns: 1fr 1fr 1fr 1fr;}
+}
+@media (max-width:555px) {
+  .gallery-media{grid-template-columns: 1fr 1fr 1fr;}
+}
+@media (max-width:415px) {
+  .gallery-media{grid-template-columns: 1fr 1fr;}
+}

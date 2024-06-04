@@ -1,0 +1,267 @@
+  /* Note: - Writing something like `margin: 25px 50px 75px 100px` means `top, right, bottom, left`*/
+  /*       - Writing something like `margin: 10px 30px 40px` means `top, right and left, bottom`*/
+  /*       - Writing something like `margin: 5px 20px` means `top and bottom, left and right`*/
+@font-face {
+  font-family: "uni-sans"; 
+  src: url("/fonts/Uni-Sans-Heavy.otf") format("opentype");}
+@font-face {
+  font-family: "comic"; 
+  src: url("/fonts/WhizBang-Roman.ttf") format("truetype");}
+@font-face {
+  font-family: "futura-regular"; 
+  src: url("/fonts/futura\ medium\ bt.ttf") format("truetype");}
+@font-face {
+  font-family: "futura-bold"; 
+  src: url("/fonts/Futura\ Bold\ font.ttf") format("truetype");}
+html{
+  font-family: "futura-regular";
+  background-color: var(--main-background);
+}
+a{
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+.wrapper {
+  max-width: 1600px;
+  display: grid; 
+  position: relative;
+  grid-template-rows: 40px 1fr 1fr 40px;
+  grid-template-columns: 180px 1fr 1fr 180px;
+  grid-template-areas: 
+    'H H H H'
+    'L M M R'
+    'L M M R'
+    'F F F F';
+  gap: 20px;
+  min-height: 100vh;
+  margin: 20px auto;
+  justify-content: center;
+}
+.H {
+  background-color: var(--red);
+  outline: 2px solid black;
+  grid-area: H;
+  z-index: 999; /*Header*/
+}
+.M {
+  grid-area: M;
+  outline: var(--default-outline);
+  background-color: var(--middle-container-background); /*Middle container*/
+}
+.M > p{
+  letter-spacing: 1px;
+  margin: 20px;
+  word-spacing: 2.5px;
+}
+.L {
+  grid-area: L; /*Left container*/
+}
+.R {
+  grid-area: R; /*Right container*/
+}
+.F {
+  background-color: var(--red);
+  outline: 2px solid black;
+  grid-area: F; /*Footer*/
+}
+
+/* HEADER */
+.zacko-logo{
+  font-family: "uni-sans";
+  margin-left: 10px;
+  font-size: 30px;
+  word-spacing: 6px;
+  letter-spacing: -2;
+  line-height: 125%;
+}
+.zacko-logo > a{
+  color: var(--logo-color);
+  text-shadow: var(--text-shadow);
+  -webkit-text-stroke: 1px black;
+}
+/* LIGHT/DARK MODE */
+.nav-button, #nav-check {
+  display: none;
+}
+.header__themeToggle {
+  float: left;
+  background-image: url(/media/light-dark-icon.png); background-color: var(--navlink-background);
+  background-size: 95%; background-repeat: no-repeat;
+  background-position: center;
+  width: 40px; height: 40px;
+  margin-right: 15px;
+  padding: 3px;
+  border: none;
+  outline: 2px solid black;
+  cursor: pointer;
+}
+.header__themeToggle.header__themeToggle--dark {
+  background-image: url(/media/light-dark-icon.png);
+}
+/********Light mode********/
+[data-theme="light"] {
+  /* General Settings */
+  --logo-color: rgb(255, 240, 220);
+  --text-shadow: -3px 3px black;
+  --navlink-background: rgb(254, 248, 240);
+  --main-background: rgb(255, 240, 220);
+  --default-outline: 2px solid black;
+  --scrollbar-color: black;
+  /*Header*/
+  --red: rgb(192, 41, 41);
+  --middle-container-background: rgb(250, 243, 234);
+}
+/********Dark mode********/
+[data-theme="dark"] {
+  --logo-color: rgb(251, 240, 199);
+  --text-shadow: -3px 3px rgb(43, 72, 113);
+  --navlink-background: rgb(245, 178, 90);
+  --main-background: rgb(49, 56, 66);
+  --default-outline: 2px solid rgb(0, 0, 0);
+  --scrollbar-color: white;
+  --red: rgb(14, 14, 14);
+  --middle-container-background: rgb(240, 227, 203);
+}
+/* NAV/MOBILE MENU */
+#nav-menu {
+  margin: auto;
+  font-family: "comic";
+  list-style-type: none;
+  float: right;
+  text-align: center;
+  margin-right: 10px;
+  font-weight: bold;
+}
+#nav-menu li{
+  display: inline-block;
+  outline: var(--default-outline);
+  height: 30px;
+  padding: 0px 5px;
+  background-color: var(--navlink-background);
+  transition: 0.2s;
+  font-size: 1rem;
+}
+#nav-menu li:hover{
+  transform: translateY(-2px) translateX(1px);
+  box-shadow: -4px 4px black;
+  background-color: rgb(255, 253, 113);
+}
+/* SIDEBARS */
+.sidebar{
+  padding: 10px;
+  outline: var(--default-outline);
+  line-height: 150%;
+  font-size: 10.5px;
+  font-weight: bold;
+  font-family: comic;
+  letter-spacing: 1px;
+  max-width: 180px;
+  margin-bottom: 20px;
+} 
+.red-text{
+  color: rgb(222, 35, 35); /* Colors text red */
+}
+#red{
+  background: rgb(255, 85, 85);
+}
+#yellow{
+  background: rgb(255, 253, 113);
+}
+#green{
+  background: rgb(115, 235, 133);
+}
+#orange{
+  background: rgb(255, 180, 87);
+}
+#blue{
+  outline: 2px dashed black;
+  background: rgb(131, 207, 248);
+}
+button {border: none;background: 0; outline: 0;}
+#tts{ /*Text to speech button*/ 
+  display: block;
+  margin-left: auto;
+  margin-right: auto;}
+#tts img{
+height: 300px;
+width: auto;
+padding: 0;
+margin: 0;
+}
+footer{
+  text-align: center;
+  align-content: center;
+}
+
+
+@media (max-width:880px) {
+  * {
+    padding: 0;
+    margin: 0 !important;}
+  .wrapper{
+    width: 100%;
+    gap: 10px;
+    grid-template-rows: 40px auto auto 40px;
+    grid-template-columns: 75px 1fr 1fr 75px;
+    grid-template-areas: 
+      'H H H H'
+      'M M M M'
+      'L L R R'
+      'F F F F';
+  }
+  /* HEADER */
+  .H {
+    outline: none;
+  }
+  .zacko-logo{
+    text-align: center;
+  }
+  /* LIGHT/DARK MODE */
+  .header__themeToggle {
+    position: absolute;
+    width: 37px;
+    height: 37px;
+  }
+  /* NAV/MOBILE MENU */
+  #nav-menu li{
+    display: list-item;
+    padding: 5px;
+  }
+  .nav-button {
+    display: inline-block;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+  }
+  .nav-button > label {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    padding: 18px;
+    cursor: pointer;
+  }
+  #nav-menu {
+    padding-top: 3px;
+    width:100%;
+    height: 0px;
+    background-color: #000000a5;
+    transition: all 0.4s ease-in-out;
+    overflow-y: hidden;
+    z-index: 999;
+  }
+  #nav-menu li:hover{
+    background-color: #bab9b1;
+  }
+  #nav-menu, #nav-menu  a {
+    display: block;
+  }
+  #nav-check:checked ~ #nav-menu {
+    height: calc(100vh - 40px);
+    overflow-y: none;
+  }
+  /* SIDEBARS */
+  .sidebar{
+    max-width: none;
+  }
+}

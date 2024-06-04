@@ -14,13 +14,13 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Homepage - Zacko</title>
+    <title>{{ title }} - Zacko</title>
     <link rel="shortcut icon" href="/media/banana.ico"/> <!-- Icon of your website -->
     <link rel="stylesheet" href="/css/style.css" /> <!-- Default CSS for website -->
     <!-- JS from Font Awesome via CDN -->
     <script src="https://kit.fontawesome.com/dae3778132.js" crossorigin="anonymous"></script>
     <!-- Metadata for Discord links -->
-    
+    {% block DiscordMetadata %}{% endblock %}
   </head>
 
 <body>
@@ -43,17 +43,7 @@
     <!-- Scripts -->
     <script src="/js/mode-switcher-img.js"></script>
   </header>
-    <div class="M">Still trying to figure out what the fuck to put in here.</div>
-  <div class="L">
-    <div class="sidebar text" id="blue">Save this coupon for a free flamethrower, while supplies last!</div>
-    <div class="sidebar text" id="green">Fun for all!</div>
-  </div>
-  <div class="R">
-    <div class="sidebar text" id="red">Wait how old are you?
-      <br>
-      Some content can contain serious subject matter such as mental health, gore and nudity.</div>
-    <div class="sidebar text" id="yellow">Breaking news: Scientists have hatched the first ever human from an egg!</div>
-  </div> 
+  {{ content | safe }}
   <footer class="F">© <script>document.write(new Date().getFullYear());</script> ZACKO</footer>
 </div>
 </body>
