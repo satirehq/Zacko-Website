@@ -13,7 +13,7 @@
 @font-face {
   font-family: "futura-bold"; 
   src: url("/fonts/Futura\ Bold\ font.ttf") format("truetype");}
-html{
+  html{
   font-family: "futura-regular";
   background-color: var(--main-background);
 }
@@ -42,30 +42,24 @@ a{
   background-color: var(--red);
   outline: 2px solid black;
   grid-area: H;
-  z-index: 999; /*Header*/
+  z-index: 999;
 }
 .M {
   grid-area: M;
   outline: var(--default-outline);
-  background-color: var(--middle-container-background); /*Middle container*/
-}
-.M > p{
-  letter-spacing: 1px;
-  margin: 20px;
-  word-spacing: 2.5px;
+  background-color: var(--middle-container-background);
 }
 .L {
-  grid-area: L; /*Left container*/
+  grid-area: L;
 }
 .R {
-  grid-area: R; /*Right container*/
+  grid-area: R;
 }
 .F {
   background-color: var(--red);
   outline: 2px solid black;
-  grid-area: F; /*Footer*/
+  grid-area: F;
 }
-
 /* HEADER */
 .zacko-logo{
   font-family: "uni-sans";
@@ -158,6 +152,21 @@ a{
   box-shadow: -4px 4px black;
   background-color: rgb(255, 253, 113);
 }
+/* MIDDLE CONTAINER */
+.title{
+  margin: 20px !important;
+  font-size: 23px;
+  font-family: futura-bold;
+  font-display: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.M > p{
+  text-indent: 40px;
+  margin: 20px 40px !important;
+  letter-spacing: 0.5px;
+  word-spacing: 4px;
+}
 /* SIDEBARS */
 .sidebar{
   padding: 10px;
@@ -189,27 +198,31 @@ a{
   outline: 2px dashed black;
   background: rgb(131, 207, 248);
 }
-button {border: none;background: 0; outline: 0;}
+/* BUTTONS */
+button {
+  border: none;
+  background: 0;
+  outline: 0;
+}
 #tts{ /*Text to speech button*/ 
   display: block;
-  margin-left: auto;
-  margin-right: auto;}
-#tts img{
-height: 300px;
-width: auto;
-padding: 0;
-margin: 0;
+  margin: 0 auto !important;
 }
+#tts img{
+  height: 200px;
+  width: auto;
+}
+/* FOOTER */
 footer{
   text-align: center;
   align-content: center;
 }
 
-
 @media (max-width:880px) {
   * {
     padding: 0;
-    margin: 0 !important;}
+    margin: 0 !important;
+  }
   .wrapper{
     width: 100%;
     gap: 10px;
@@ -254,9 +267,9 @@ footer{
   }
   #nav-menu {
     padding-top: 3px;
-    width:100%;
+    width: 100%;
     height: 0px;
-    background-color: #000000a5;
+    background-color: var(--main-background);
     transition: all 0.4s ease-in-out;
     overflow-y: hidden;
     z-index: 999;
@@ -271,8 +284,25 @@ footer{
     height: calc(100vh - 40px);
     overflow-y: none;
   }
+  /* MIDDLE CONTAINER */
+  .title{
+    margin: 20px !important;
+    font-size: 23px;
+    font-family: futura-bold;
+    font-display: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  .M > p{
+    text-indent: 40px;
+    margin: 20px 40px !important;
+    word-spacing: 4px;
+  }
   /* SIDEBARS */
   .sidebar{
     max-width: none;
+  }
+  #tts img{
+    height: 180px;
   }
 }
