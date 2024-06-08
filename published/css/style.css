@@ -86,18 +86,29 @@ a{
 }
 .header__themeToggle {
   float: left;
-  background-image: url(/media/light-dark-icon.png); background-color: var(--navlink-background);
-  background-size: 95%; background-repeat: no-repeat;
+  background-image: url(/media/light-dark-icon.png);
+  background-color: var(--navlink-background);
+  background-size: 95%;
+  background-repeat: no-repeat;
   background-position: center;
-  width: 40px; height: 40px;
+  width: 40px;
+  height: 40px;
   margin-right: 15px;
   padding: 3px;
   border: none;
   outline: 2px solid black;
   cursor: pointer;
 }
+.header__themeToggle:hover{
+  background-color: rgb(245, 178, 90);
+  transition: 0.5s;
+}
 .header__themeToggle.header__themeToggle--dark {
   background-image: url(/media/light-dark-icon.png);
+}
+.header__themeToggle.header__themeToggle--dark:hover{
+  background-color: rgb(254, 248, 240);
+  transition: 0.5s;
 }
 /********Light mode********/
 [data-theme="light"] {

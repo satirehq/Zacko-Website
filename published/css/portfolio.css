@@ -2,6 +2,7 @@
 #gallery{
   outline: none;
   background-color: rgba(0, 0, 0, 0);
+  text-align: center;
 }
 .fancybox-show-caption.fancybox-vertical-caption .fancybox-caption {
   transform: translate3d(0, 0, 0); background-color: var(--middle-container-background)
@@ -11,17 +12,16 @@
 } 
   /* Info, Thumbnail, Close buttons */
 .fancybox-button { 
-  background-color: var(--main-background);
+  background-color: var(--middle-container-background);
   color: var(--off-white);
   outline: 2px solid black;
   font-size: 14px;
   width: 80px;
 }
 .fancybox-button:hover {
-  background: rgb(168, 57, 57);}
+  background: rgb(168, 57, 57);transition: 0.5s;}
   /* "Previous/Next" buttons beside the image */
 .fancybox-navigation .fancybox-button {
-  opacity: 0.5;
   width: 50px;
   height: 50px;
   z-index: 99996;
@@ -48,7 +48,7 @@ h4{
   /* "Previous/Next" buttons inside the description box */
 .back-button{
   left: 0;
-  margin-bottom:-30px;
+  float: left;
 }
 .next-button{
   right: 0;
@@ -167,7 +167,7 @@ h4{
  
  /**** GALLERY IMAGES + HOVER ANIMATION ****/
  .gallery-media{
-  margin-top: 0;
+  margin: 0 auto;
   display: grid;
   padding: 20px;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
