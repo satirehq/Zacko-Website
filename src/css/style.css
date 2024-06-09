@@ -39,7 +39,7 @@ a{
   justify-content: center;
 }
 .H {
-  background-color: var(--red);
+  background-color: var(--HF-background);
   outline: 2px solid black;
   grid-area: H;
   z-index: 999;
@@ -56,7 +56,7 @@ a{
   grid-area: R;
 }
 .F {
-  background-color: var(--red);
+  background-color: var(--HF-background);
   outline: 2px solid black;
   grid-area: F;
 }
@@ -71,7 +71,7 @@ a{
 }
 .zacko-logo > a{
   color: var(--logo-color);
-  text-shadow: var(--text-shadow);
+  text-shadow: var(--logo-text-shadow);
   -webkit-text-stroke: 1px black;
 }
 /* LIGHT/DARK MODE */
@@ -106,26 +106,30 @@ a{
 }
 /********Light mode********/
 [data-theme="light"] {
-  /* General Settings */
-  --logo-color: rgb(255, 240, 220);
-  --text-shadow: -3px 3px black;
-  --navlink-background: rgb(254, 248, 240);
+  /* General */
   --main-background: rgb(255, 240, 220);
   --default-outline: 2px solid black;
-  --scrollbar-color: black;
-  /*Header*/
-  --red: rgb(192, 41, 41);
+  --HF-background: rgb(192, 41, 41);
+  /* Header */
+  --logo-color: rgb(255, 240, 220);
+  --logo-text-shadow: -3px 3px black;
+  --nav-menu-icon: black;
+  --navlink-background: rgb(254, 248, 240);
+  /* Middle contrainer */
   --middle-container-background: rgb(250, 243, 234);
 }
 /********Dark mode********/
 [data-theme="dark"] {
-  --logo-color: rgb(251, 240, 199);
-  --text-shadow: -3px 3px rgb(43, 72, 113);
-  --navlink-background: rgb(245, 178, 90);
+  /* General */
   --main-background: rgb(49, 56, 66);
   --default-outline: 2px solid rgb(0, 0, 0);
-  --scrollbar-color: white;
-  --red: rgb(14, 14, 14);
+  --HF-background: rgb(14, 14, 14);
+  /* Header */
+  --logo-color: rgb(251, 240, 199);
+  --logo-text-shadow: -3px 3px rgb(43, 72, 113);
+  --nav-menu-icon: rgb(251, 240, 199);
+  --navlink-background: rgb(245, 178, 90);
+  /* Middle contrainer */
   --middle-container-background: rgb(240, 227, 203);
 }
 /* NAV/MOBILE MENU */
