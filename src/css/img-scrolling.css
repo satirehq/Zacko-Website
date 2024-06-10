@@ -41,8 +41,13 @@
 }
   
 @media (max-width: 950px) {
+    .gallery-vertical-section{
+        width: 300px; 
+        transition: 0.5s;
+    }
     .gallery-vertical {
       width: 300px;
       height: 150px;
+      transition: 0.5s;
     }
 }
