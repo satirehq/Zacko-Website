@@ -45,7 +45,7 @@ h3{
 h4{
   line-height: 200%;
   color: gray;}
-  /* "Previous/Next" buttons inside the description box */
+  /* "Previous/Next" buttons INSIDE the description box */
 .back-button{
   left: 0;
   float: left;
@@ -71,7 +71,9 @@ h4{
   color: #ffffff;
 } 
 .fancy-nav a:hover {
-  color: rgb(89, 89, 89);
+  color: rgb(132, 132, 132);
+  text-decoration: none;
+  transition: 0.3s;
 }
   /* Position of description box */
 .fancybox-caption > div {
