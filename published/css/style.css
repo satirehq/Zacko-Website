@@ -161,6 +161,12 @@ a{
   margin-bottom: 20px;
   background-color: var(--middle-container-background);
 } 
+.sidebar img{
+  max-width: 150px;
+  height: auto;
+  margin-top: 10px;
+  justify-content: center;
+}
 .red-text{
   color: rgb(222, 35, 35); /* Colors text red */
 }
