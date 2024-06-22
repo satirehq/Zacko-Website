@@ -1,117 +1,130 @@
-let originalTexts = {};
-let gibberishTurned = false;
-let clickCounts = {};
+document.addEventListener('DOMContentLoaded', () => {
+    const transformButton = document.getElementById('transformButton');
+    const restoreButton = document.getElementById('restoreButton');
 
-document.addEventListener('DOMContentLoaded', function() {
-    // Attach event listeners to buttons
-    document.getElementById('gibberishButton').addEventListener('click', turnToGibberish);
-    document.getElementById('resetText').addEventListener('click', resetText);
+    const textNodes = [];
+    const originalTexts = [];
 
-        // Stores original text from left, middle and right containers
-        let leftContainer = document.querySelector('.left-container');
-        originalTexts['left-container'] = leftContainer.innerHTML;
-    
-        let middleContainer = document.querySelector('.middle-container');
-        originalTexts['middle-container'] = middleContainer.innerHTML;
-
-        let rightContainer = document.querySelector('.right-container');
-        originalTexts['right-container'] = rightContainer.innerHTML;
-});
-
-function turnToGibberish() {
-    document.querySelectorAll('.text').forEach(textElement => {
-        let textId = textElement.id;
-        if (!originalTexts[textId]) {
-            originalTexts[textId] = textElement.textContent;
-            clickCounts[textId] = 0;
+    // Function to recursively find all text nodes
+    const getTextNodes = (node) => {
+        if (node.nodeType === Node.TEXT_NODE && node.textContent.trim()) {
+            textNodes.push(node);
+            originalTexts.push(node.textContent);
+        } else {
+            node.childNodes.forEach(getTextNodes);
         }
+    };
 
-        let text = textElement.textContent;
-        let gibberishText = '';
+    getTextNodes(document.body);
 
-        const vowels = { 'a': ['e', 'i', 'o', 'u'], 'e': ['a', 'i', 'o', 'u'], 'i': ['a', 'e', 'o', 'u'], 'o': ['a', 'e', 'i', 'u'], 'u': ['a', 'e', 'i', 'o'] };
+    // Function to gibberishify text based on specified rules
+    const gibberishify = (text) => {
+        let isFirstLetter = true; // Flag to track if it's the first letter of a sentence
+        return text.split('').map((char, index, arr) => {
+            // Check if it's the first letter of a sentence
+            if (isFirstLetter && (index === 0 || /[.!?]\s+/.test(arr[index - 2]))) {
+                isFirstLetter = false;
+                return char.toUpperCase(); // Keep the first letter of a sentence uppercase
+            }
 
-        const consonantMap = new Map([
-            ['c', 'ck'],
-            ['f', 'ph'],
-            ['h', 'wh'],
-            ['j', 'g'],
-            ['k', 'c'],
-            ['m', 'nn'],
-            ['n', 'em'],
-            ['q', 'kw'],
-            ['s', 'z'],
-            ['t', 'd'],
-            ['v', 'bb'],
-            ['w', 'wua'],
-            ['x', 'ks'],
-            ['y', 'i'],
-            ['z', 's'],
-        ]);
-
-        for (let i = 0; i < text.length; i++) {
-            let char = text[i].toLowerCase();
-            if (char.match(/[a-z]/)) { // If a character is a letter
-                if (i % 2 === 0) {
-                    gibberishText += text[i]; // Keeps every third letter unchanged
-                } else {
-                    if (vowels[char]) {
-                        let randomVowel = vowels[char][Math.floor(Math.random() * vowels[char].length)];
-                        gibberishText += char === char.toUpperCase() ? randomVowel.toUpperCase() : randomVowel;
-                    } else if (Math.random() < 0.1) { // Swaps random consonant letters at a probability of 20%
-                        let randomConsonant = consonantMap.get(char) || char;
-                        gibberishText += char === char.toUpperCase() ? randomConsonant.toUpperCase() : randomConsonant;
-                    } else if (Math.random() < 0.025) { // Duplicates (some) letters at a probability of 2.5%
-                        gibberishText += text[i] + text[i];
-                    } else {
-                        gibberishText += text[i]; // Keeps untargeted vowels or consonants unchanged
+            // 20% chance to change any letter
+            if (Math.random() < 0.2) {
+                // Check if it's a consonant and change it based on the provided alternatives
+                if (/[bcdfghjklmnpqrstvwxyz]/i.test(char)) {
+                    switch (char.toLowerCase()) {
+                        case 'c':
+                            return Math.random() < 0.5 ? 'c' : 'ck';
+                        case 'f':
+                            return Math.random() < 0.5 ? 'f' : 'ph';
+                        case 'h':
+                            return Math.random() < 0.5 ? 'h' : 'wh';
+                        case 'j':
+                            return 'g'; // Always change 'j' to 'g'
+                        case 'k':
+                            return 'c'; // Always change 'k' to 'c'
+                        case 'm':
+                            return Math.random() < 0.5 ? 'm' : 'nn';
+                        case 'n':
+                            return Math.random() < 0.5 ? 'n' : 'em';
+                        case 'q':
+                            return 'kw'; // Always change 'q' to 'kw'
+                        case 's':
+                            return 'z'; // Always change 's' to 'z'
+                        case 't':
+                            return 'd'; // Always change 't' to 'd'
+                        case 'v':
+                            return Math.random() < 0.5 ? 'v' : 'bb';
+                        case 'w':
+                            return 'wua'; // Always change 'w' to 'wua'
+                        case 'x':
+                            return 'ks'; // Always change 'x' to 'ks'
+                        case 'y':
+                            return 'i'; // Always change 'y' to 'i'
+                        case 'z':
+                            return 's'; // Always change 'z' to 's'
+                        default:
+                            return char;
                     }
                 }
-            } else {
-                gibberishText += text[i]; // Keeps numbers and symbols unaffected
+                // Change vowels to one of the provided alternatives based on the rules
+                else if (/[aeiou]/i.test(char)) {
+                    const alternatives = {
+                        'a': ['e', 'i', 'o', 'u'],
+                        'e': ['a', 'i', 'o', 'u'],
+                        'i': ['a', 'e', 'o', 'u'],
+                        'o': ['a', 'e', 'i', 'u'],
+                        'u': ['a', 'e', 'i', 'o']
+                    };
+                    const randomVowel = alternatives[char.toLowerCase()];
+                    return randomVowel[Math.floor(Math.random() * randomVowel.length)];
+                }
             }
-        }
 
-        textElement.textContent = gibberishText;
-        clickCounts[textId]++;
-        if (clickCounts[textId] === 1) {
-            document.getElementById('gibberishButton').textContent = '3 AM simulator';
-        }else if (clickCounts[textId] === 2) {
-            document.getElementById('gibberishButton').textContent = '4 simulator';
-        }else if (clickCounts[textId] === 3) {
-            document.getElementById('gibberishButton').textContent = '?????? simulator';
+            // Default case: keep the original character
+            return char;
+        }).join('');
+    };
+
+    let transformClickCount = 0;
+
+    // Update button label based on transformation count
+    const updateButtonLabel = () => {
+        switch (transformClickCount) {
+            case 1:
+                transformButton.textContent = '3 am simulator';
+                break;
+            case 2:
+                transformButton.textContent = '4 am simulator';
+                break;
+            case 3:
+                transformButton.textContent = '5 am simulator';
+                break;
+            default:
+                transformButton.textContent = '????? simulator';
         }
+    };
+
+    // Event listener for transform button click
+    transformButton.addEventListener('click', () => {
+        transformClickCount++;
+        textNodes.forEach((node, index) => {
+            if (node.parentNode !== transformButton && node.parentNode !== restoreButton) {
+                node.textContent = gibberishify(originalTexts[index]);
+            }
+        });
+        updateButtonLabel();
+        restoreButton.style.display = 'inline-block';
     });
 
-    // Shows the reset button after the first application of turning text into gibberish
-    if (!gibberishTurned) {
-        document.getElementById('resetText').style.display = 'inline-block';
-        gibberishTurned = true;
-    }
-}
-
-function resetText() {
-    document.querySelectorAll('.text').forEach(textElement => {
-        let textId = textElement.id;
-        if (originalTexts[textId]) {
-            textElement.textContent = originalTexts[textId];
-            clickCounts[textId] = 0; // Reset click count for the text element
-        }
+    // Event listener for restore button click
+    restoreButton.addEventListener('click', () => {
+        textNodes.forEach((node, index) => {
+            if (node.parentNode !== transformButton && node.parentNode !== restoreButton) {
+                node.textContent = originalTexts[index];
+            }
+        });
+        transformClickCount = 0; // Reset click count
+        transformButton.textContent = '2 am simulator'; // Reset button label
+        restoreButton.style.display = 'none';
     });
-    
-        // Resets text to normal from left, middle and right containers
-        // Also prevents the middle container from changing size and bodies of text being switched around after the 'resetButton' is applied
-        let leftContainer = document.querySelector('.left-container');
-        leftContainer.innerHTML = originalTexts['left-container'];
-
-        let middleContainer = document.querySelector('.middle-container');
-        middleContainer.innerHTML = originalTexts['middle-container'];
-
-        let rightContainer = document.querySelector('.right-container');
-        rightContainer.innerHTML = originalTexts['right-container'];
-    
-    // Hides the reset button after resetting the text
-    document.getElementById('resetText').style.display = 'none';
-    gibberishTurned = false;
-    document.getElementById('gibberishButton').textContent = '2 AM simulator';
-}
+});
