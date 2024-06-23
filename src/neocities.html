@@ -73,15 +73,33 @@ title: Neocities stuff
   margin: 0 auto;}
 
 .discord-screenshots img{
-  display: inline-block; width: 300px;}
+  display: inline-block; width: 300px; height: auto;}
 
 #medium-discord-msg{
+  position: relative;
   width: 400px;
+  max-width: 100%;
   grid-column: span 2;
   grid-row: span 2;}
 
 #long-discord-msg{
   width: 600px;
+  max-width: 100%;
   grid-column: span 2;
   grid-row: span 2;}
+
+  @media (max-width:880px){
+    #medium-discord-msg{
+  position: relative;
+  width: 300px;
+  max-width: 100%;
+  grid-column: span 2;
+  grid-row: span 2;}
+
+#long-discord-msg{
+  width: 400px;
+  max-width: 100%;
+  grid-column: span 2;
+  grid-row: span 2;}
+  }
 </style>
