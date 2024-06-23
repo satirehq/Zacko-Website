@@ -211,9 +211,9 @@ button {
   cursor: pointer;
 }
 #tts{ /*Text to speech button*/ 
+  outline: none;
   display: block;
   margin: 0 auto !important;
-  outline: none;
 }
 #tts img{
   height: 200px;
