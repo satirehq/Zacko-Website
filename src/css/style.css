@@ -192,6 +192,19 @@ button {
   background: 0;
   outline: 0;
 }
+.M > button,
+.L > button,
+.R > button{
+  padding: 10px;
+  outline: var(--default-outline);
+  line-height: 150%;
+  font-size: 10.5px;
+  font-weight: bold;
+  font-family: comic;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+  background-color: var(--middle-container-background);
+}
 #tts{ /*Text to speech button*/ 
   display: block;
   margin: 0 auto !important;
@@ -199,6 +212,9 @@ button {
 #tts img{
   height: 200px;
   width: auto;
+}
+#restoreButton {
+  display: none; /* Button is hidden until "transformButton" is active */
 }
 /* FOOTER */
 footer{
