@@ -23,6 +23,7 @@ header a{
   cursor: pointer;
 }
 a{
+  color: blue;
   text-decoration: none;
   cursor: pointer;
 }
@@ -209,12 +210,12 @@ button {
   margin-bottom: 20px;
   background-color: var(--middle-container-background);
   cursor: pointer;
+  cursor: pointer;
 }
 #tts{ /*Text to speech button*/ 
   outline: none !important;
   display: block;
   margin: 0 auto !important;
-  cursor: pointer;
 }
 #tts img{
   height: 200px;
