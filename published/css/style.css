@@ -22,6 +22,10 @@ header a{
   text-decoration: none;
   cursor: pointer;
 }
+a{
+  text-decoration: none;
+  cursor: pointer;
+}
 .wrapper {
   max-width: 1600px;
   display: grid; 
