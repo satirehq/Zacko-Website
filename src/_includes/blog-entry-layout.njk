@@ -1,0 +1,28 @@
+<html lang="en" data-theme="light">
+{% include 'components/metadata.njk' %}
+
+<body>
+<div class="wrapper">
+{% include 'components/header.njk' %}
+    <div class="M">
+      <article>
+        <ul class="tag-list">Tags:
+          {% for tag in tags %}
+            <li>
+              <a href="/blog/tag/{{ tag | slugify }}">{{tag}}</a>
+            </li>
+          {% endfor %}
+        </ul>
+        <center><h2 class="title">
+          {{ title }}
+        </h2>
+        <time class="blog-date">{{ date | justYear }}</time></center>
+        <br>
+          {{ content | safe }}
+      </article>
+    </div>
+      <script type="text/javascript" src="/js/gibberish.js"></script>
+  <footer class="F">© <script>document.write(new Date().getFullYear());</script> ZACKO</footer>
+</div>
+</body>
+</html>

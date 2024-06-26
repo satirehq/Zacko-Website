@@ -17,3 +17,6 @@ To add a new image to the gallery:
   <div class="M">Main content</div>
   <div class="L">left Sidebar</div>
   <div class="R">Right Sidebar</div>
+
+<!-- Date format: -->
+"year-month-day"

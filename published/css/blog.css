@@ -1,0 +1,31 @@
+.title{
+margin-bottom: 10px !important;
+}
+
+time{
+    color: rgb(116, 116, 116);
+    font-size: 14px;
+    word-spacing: 3px;
+    letter-spacing: 0.25;
+    font-weight: bold;
+}
+.tag-list{
+    color: rgb(116, 116, 116);
+    font-weight: bold;
+    font-size: 14px;
+    text-indent: 0px;
+}
+.tag-list li{
+    list-style-type: none;
+    display: inline-block;
+}
+
+.list{
+    line-height: 160%;
+    margin: 0px auto;
+    padding: 20px;
+    list-style-type: none;
+    width: 75%;
+    /*background-color: rgb(255, 238, 191);
+    outline: 2px solid black;*/
+}

@@ -1,4 +1,6 @@
+const { DateTime } = require("luxon");
 module.exports = function(eleventyConfig) {
+  
     //Getting css, js, img, etc.
     eleventyConfig.addPassthroughCopy("src/art");
     eleventyConfig.addPassthroughCopy("src/css");
@@ -6,10 +8,17 @@ module.exports = function(eleventyConfig) {
     eleventyConfig.addPassthroughCopy("src/fonts");
     eleventyConfig.addPassthroughCopy("src/media");
     eleventyConfig.addPassthroughCopy("src/posts");
-    eleventyConfig.addCollection('posts', function(collectionApi) {
-      return collectionApi.getFilteredByGlob('src/posts/**/*.md');
-    })
+
+  eleventyConfig.addCollection('posts', function(collectionApi) {
+    return collectionApi.getFilteredByGlob('src/blog/posts/**/*.md');
+  })
     
+
+  eleventyConfig.addFilter("justYear", (dateString) => {
+    dateObj = new Date(dateString);
+    return DateTime.fromJSDate(dateObj).toLocaleString(DateTime.DATE_MED);
+  });
+  
     return {
       markdownTemplateEngine: "njk",
       htmlTemplateEngine: "njk",
@@ -19,4 +28,6 @@ module.exports = function(eleventyConfig) {
         includes: "_includes",
       }
     }
+    
   };
+  

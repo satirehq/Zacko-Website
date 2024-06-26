@@ -23,7 +23,7 @@ header a{
   cursor: pointer;
 }
 a{
-  color: blue;
+  color: rgb(0, 76, 255);
   text-decoration: none;
   cursor: pointer;
 }
@@ -58,7 +58,7 @@ a{
   grid-area: L;
 }
 .R {
-  grid-area: R;
+grid-area: R;
 }
 .F {
   background-color: var(--HF-background);
@@ -111,7 +111,7 @@ a{
   cursor: pointer;
 }
 #subnav{
-  background-color: var(--navlink-background) !important;
+background-color: var(--navlink-background) !important;
 }
 .subnavbtn{
   margin-top: 9;
@@ -140,15 +140,17 @@ a{
 }
 /* MIDDLE CONTAINER */
 .title{
+  text-align: center !important;
   margin: 20px !important;
   font-size: 23px;
   font-family: futura-bold;
   font-display: bold;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 1px !important;
 }
-.M > p{
-  text-indent: 40px;
+.M > p,
+article > p{
+  text-indent: 40px !important;
   margin: 20px 40px !important;
   letter-spacing: 0.5px;
   word-spacing: 4px;
