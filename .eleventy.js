@@ -14,7 +14,7 @@ module.exports = function(eleventyConfig) {
   })
     
 
-  eleventyConfig.addFilter("justYear", (dateString) => {
+  eleventyConfig.addFilter("justDate", (dateString) => {
     dateObj = new Date(dateString);
     return DateTime.fromJSDate(dateObj).toLocaleString(DateTime.DATE_MED);
   });

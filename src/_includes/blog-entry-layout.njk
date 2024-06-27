@@ -2,6 +2,7 @@
 {% include 'components/metadata.njk' %}
 
 <body>
+<link rel="stylesheet" href="/css/blog.css" />
 <div class="wrapper">
 {% include 'components/header.njk' %}
     <div class="M">
@@ -16,7 +17,7 @@
         <center><h2 class="title">
           {{ title }}
         </h2>
-        <time class="blog-date">{{ date | justYear }}</time></center>
+        <time class="blog-date">{{ date | justDate }}</time></center>
         <br>
           {{ content | safe }}
       </article>
