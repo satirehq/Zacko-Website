@@ -135,9 +135,9 @@ background-color: var(--navlink-background) !important;
 .subnav-content li:hover{
   background-color: rgb(255, 253, 113) !important;
 }
-#subnav:hover .subnav-content {/* Opens the subnav menu after you hover */
+/*#subnav:hover .subnav-content { Opens the subnav menu after you hover 
   display: block;
-}
+}*/
 /* MIDDLE CONTAINER */
 .title{
   text-align: center !important;
