@@ -17,7 +17,7 @@ function updateButton({ buttonEl, isLight }) {
       return "light";
     }
   
-    return "dark";
+    return "light";
   }
   
   function updateThemeOnHtmlEl({ theme }) {
