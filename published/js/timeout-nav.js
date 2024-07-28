@@ -7,6 +7,6 @@ $('#subnav').hover(
     function() {
       timeout_nav = setTimeout(() => {
         $(this).find('.subnav-content').css("display", "none");
-      }, 50);
+      }, 150);
     }
 );
